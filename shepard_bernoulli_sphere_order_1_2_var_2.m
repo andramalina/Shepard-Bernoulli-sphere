@@ -65,6 +65,7 @@ toc
 function [s1,s2] = shepard_bern(x, n, nodes, triangles, miu)
 m = length(triangles);
 s1=0; s2=0;
+ v = sum_all_triangles(x, nodes, triangles, miu);
     for i=1:m
         phi_i = phi(x, i ,nodes, triangles, miu);
     %=======================================================
@@ -89,7 +90,6 @@ s1=0; s2=0;
         y3=arc_cosine(node3(3));
         node3=[x3 y3];
         point = [xx yy];
-        v = sum_all_triangles(x, nodes, triangles, miu);
         res1 = bern_ord_1(node1, node2, node3, lambda1, lambda2, lambda3);
         res2 = bern_ord_2(node1, node2, node3, lambda1, lambda2, lambda3);
     %=======================================================
